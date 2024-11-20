@@ -10,7 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { today, search, person } from 'ionicons/icons';
+import { newspaper, search, person } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
@@ -67,7 +67,7 @@ const App: React.FC = () => (
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={today} />
+            <IonIcon aria-hidden="true" icon={newspaper} />
             <IonLabel>News Page</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab2" href="/tab2">
