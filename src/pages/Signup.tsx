@@ -18,7 +18,8 @@ const Signup: React.FC = () => {
                     <IonInput label="Password" labelPlacement="stacked" type="password" value="password"></IonInput>
                   </IonItem>
                   <IonItem>
-                    <IonInput label="Password Confirmation" labelPlacement="stacked" type="password" value="password"></IonInput>
+                    <IonInput label="Password Confirmation"
+                    labelPlacement="stacked" type="password" value="password"></IonInput>
                   </IonItem>
                   <IonButton fill="solid" expand="full">Sign Up</IonButton>
                   <IonCardSubtitle>Already have an account? Login!</IonCardSubtitle>
