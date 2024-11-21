@@ -70,7 +70,7 @@ const App: React.FC = () => (
           </Route>
         </IonRouterOutlet>
         {location.pathname !== '/signup' && (
-        <IonTabBar slot="bottom" color="custom-tab-bar">
+        <IonTabBar slot="bottom" color="primary">
           <IonTabButton tab="tab1" href="/tab1">
             <IonIcon aria-hidden="true" icon={newspaper} />
             <IonLabel>News Page</IonLabel>

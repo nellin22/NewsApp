@@ -4,3 +4,11 @@
     align-items: center;
     height: 100%;
 }
+ion-card {
+    background: #ffffff;
+    color: #000000;
+}
+ion-input {
+    background: #ffffff;
+    color: #000000;
+}

@@ -1,4 +1,4 @@
-import { IonContent, IonPage, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
+import { IonContent, IonPage, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonItem, IonInput } from '@ionic/react';
 import './Signup.css';
 
 const Signup: React.FC = () => {
@@ -8,11 +8,21 @@ const Signup: React.FC = () => {
       <div className="flex-center">
             <IonCard>
                 <IonCardHeader>
-                    <IonCardTitle color="custom-tab-bar">Sign Up</IonCardTitle>
+                    <IonCardTitle>Sign Up</IonCardTitle>
                 </IonCardHeader>
-                <IonCardContent>Sign up elements here</IonCardContent>
-                <IonButton fill="clear">Sign Up</IonButton>
-                <IonCardContent>Already have an account? Login!</IonCardContent>
+                <IonCardContent>
+                  <IonItem>
+                    <IonInput label="Email" labelPlacement="stacked" type="email" placeholder="email@domain.com"></IonInput>
+                  </IonItem>
+                  <IonItem>
+                    <IonInput label="Password" labelPlacement="stacked" type="password" value="password"></IonInput>
+                  </IonItem>
+                  <IonItem>
+                    <IonInput label="Password Confirmation" labelPlacement="stacked" type="password" value="password"></IonInput>
+                  </IonItem>
+                  <IonButton fill="solid" expand="full">Sign Up</IonButton>
+                  <IonCardSubtitle>Already have an account? Login!</IonCardSubtitle>
+                </IonCardContent>
             </IonCard>
         </div>
       </IonContent>

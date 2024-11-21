@@ -1,5 +1,8 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
-.custom-tab-bar {
-    --background: #515BAD !important;
-  }
+
+:root.md {
+  --ion-text-color: #000000;
+  --ion-background-color: #ffffff;
+  --ion-color-primary: #515BAD;
+}
