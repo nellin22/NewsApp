@@ -1,6 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
-import {
-  IonApp,
+import { IonApp,
   IonIcon,
   IonLabel,
   IonRouterOutlet,
@@ -15,6 +14,7 @@ import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 import Signup from './pages/Signup';
+import Welcome from './pages/Welcome';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -64,6 +64,9 @@ const App: React.FC = () => (
           </Route>
           <Route exact path="/">
             <Redirect to="/tab1" />
+          </Route>
+          <Route exact path="/Welcome">
+            <Welcome/>
           </Route>
           <Route path="/Signup">
             <Signup/>
