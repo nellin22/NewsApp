@@ -1,0 +1,66 @@
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  ion-card {
+    background: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+    padding: 16px;
+    border: 2px solid #515BAD;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  ion-card-title {
+    color: #000000;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+  
+  .profile-item {
+    display: grid;
+    grid-template-columns: 100px 1fr; /* Set fixed width for the label column */
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 1rem;
+  }
+  
+  .label {
+    color: #515BAD;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 8px;
+  }
+  
+  .value {
+    color: #000000;
+  }
+  
+  ion-button {
+    background: #515BAD;
+    color: #ffffff;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 12px;
+    padding: 12px;
+  }
+  
+  ion-button[fill="outline"] {
+    background: transparent;
+    color: #515BAD;
+    border: 2px solid #515BAD;
+  }
+  
+  ion-button:hover {
+    filter: brightness(1.1);
+  }
+  
+  ion-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
