@@ -1,0 +1,25 @@
+ion-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  ion-content {
+    overflow-y: auto; 
+    padding: 16px;
+    height: 100%;
+  }
+
+  .news-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Auto grid layout */
+  }
+  
+  .news-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+  
