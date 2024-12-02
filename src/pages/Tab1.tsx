@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -8,6 +8,7 @@ import {
   IonMenu,
   IonList,
   IonItem,
+  IonIcon,
   IonLabel,
   IonMenuButton,
   IonButtons,
@@ -19,10 +20,10 @@ import {
   IonImg,
   IonButton,
 } from '@ionic/react';
+import { businessOutline, videocamOutline, newspaperOutline, medkitOutline, rocketOutline, basketballOutline, desktopOutline } from 'ionicons/icons';
 import axios from 'axios';
 import './Tab1.css';
 
-// Tyypit API:n artikkelille
 interface Article {
   source: {
     name: string;
@@ -40,18 +41,29 @@ const API_KEY = '01d88bddeb73425fa6ef5a90e4a0b365';
 const BASE_URL = 'https://newsapi.org/v2/';
 
 const categories = [
+  'general',
   'business',
   'entertainment',
-  'general',
+  'technology',
+  'sports',
   'health',
   'science',
-  'sports',
-  'technology',
 ];
+
+const categoryIcons: { [key in 'business' | 'entertainment' | 'general' | 'health' | 'science' | 'sports' | 'technology']: string } = {
+  business: businessOutline,
+  entertainment: videocamOutline,
+  general: newspaperOutline,
+  health: medkitOutline,
+  science: rocketOutline,
+  sports: basketballOutline,
+  technology: desktopOutline,
+};
 
 const Tab1: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('general');
+  const menuRef = useRef<HTMLIonMenuElement>(null);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -72,12 +84,19 @@ const Tab1: React.FC = () => {
     fetchNews();
   }, [selectedCategory]);
 
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+    menuRef.current?.close();
+  };
+
   return (
     <IonPage>
-      {/* Menu Section */}
-      <IonMenu contentId="main-content">
+      <IonMenu contentId="main-content" ref={menuRef}>
         <IonHeader>
-          <IonToolbar>
+          <IonToolbar color="primary">
+          <IonButtons slot="start">
+              <IonMenuButton/>
+            </IonButtons>
             <IonTitle>Categories</IonTitle>
           </IonToolbar>
         </IonHeader>
@@ -87,21 +106,21 @@ const Tab1: React.FC = () => {
               <IonItem
                 button
                 key={category}
-                onClick={() => setSelectedCategory(category)}
+                onClick={() => handleCategoryClick(category)}
+                className={category === selectedCategory ? 'selected-category' : ''}
               >
+                <IonIcon icon={categoryIcons[category as keyof typeof categoryIcons]} slot="start" />
                 <IonLabel>{category.charAt(0).toUpperCase() + category.slice(1)}</IonLabel>
               </IonItem>
             ))}
           </IonList>
         </IonContent>
       </IonMenu>
-
-      {/* Main Content Section */}
-      <IonContent id="main-content">
+      <IonPage id="main-content">
         <IonHeader>
           <IonToolbar color="primary">
             <IonButtons slot="start">
-              <IonMenuButton />
+              <IonMenuButton/>
             </IonButtons>
             <IonTitle>News</IonTitle>
           </IonToolbar>
@@ -134,7 +153,7 @@ const Tab1: React.FC = () => {
             </div>
           )}
         </IonContent>
-      </IonContent>
+      </IonPage>
     </IonPage>
   );
 };
