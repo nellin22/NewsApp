@@ -7,7 +7,8 @@ import { IonContent,
   IonCardSubtitle,
   IonCardTitle,
   IonItem,
-  IonInput } from '@ionic/react';
+  IonInput,
+  IonRouterLink } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import './Signup.css';
 
@@ -15,7 +16,7 @@ const Signup: React.FC = () => {
   const history = useHistory();
 
   const handleSignup = () => {
-    history.push('/welcome');
+    history.push('/tabs/welcome');
   };
   return (
     <IonPage>
@@ -45,7 +46,9 @@ const Signup: React.FC = () => {
                     value="password"></IonInput>
                   </IonItem>
                   <IonButton fill="solid" expand="full" onClick={handleSignup}>Sign Up</IonButton>
-                  <IonCardSubtitle>Already have an account? Login!</IonCardSubtitle>
+                  <IonCardSubtitle>
+                    <IonRouterLink routerLink="/login">Already have an account? Login!</IonRouterLink>
+                  </IonCardSubtitle>
                 </IonCardContent>
             </IonCard>
         </div>

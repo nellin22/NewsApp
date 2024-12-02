@@ -52,63 +52,51 @@ setupIonicReact();
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/Welcome">
-            <Welcome />
-          </Route>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/tab1" />
-          </Route>
-          <Route path="/Signup">
-            <Signup />
-          </Route>
-          <Route path="/Login">
-            <Login />
-          </Route>
-        </IonRouterOutlet>
-        {location.pathname !== '/signup' && (
-        <IonTabBar slot="bottom" color="primary">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={newspaper} />
-            <IonLabel>News Page</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={search} />
-            <IonLabel>Search</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={person} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-        )}
-        {location.pathname !== '/login' && (
-        <IonTabBar slot="bottom" color="primary">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={newspaper} />
-            <IonLabel>News Page</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={search} />
-            <IonLabel>Search</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={person} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-        )}
-      </IonTabs>
+      <IonRouterOutlet>
+        {/* Routes without tabs */}
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/signup">
+          <Signup />
+        </Route>
+        {/* Routes with Tabs */}
+        <Route path="/tabs">
+          <IonTabs>
+            <IonRouterOutlet>
+              <Route exact path="/tabs/welcome">
+                <Welcome />
+              </Route>
+              <Route exact path="/tabs/tab1">
+                <Tab1 />
+              </Route>
+              <Route exact path="/tabs/tab2">
+                <Tab2 />
+              </Route>
+              <Route exact path="/tabs/tab3">
+                <Tab3 />
+              </Route>
+              <Redirect exact from="/tabs" to="/tabs/welcome" />
+            </IonRouterOutlet>
+            <IonTabBar slot="bottom" color="primary">
+              <IonTabButton tab="tab1" href="/tabs/tab1">
+                <IonIcon aria-hidden="true" icon={newspaper} />
+                <IonLabel>News Page</IonLabel>
+              </IonTabButton>
+              <IonTabButton tab="tab2" href="/tabs/tab2">
+                <IonIcon aria-hidden="true" icon={search} />
+                <IonLabel>Search</IonLabel>
+              </IonTabButton>
+              <IonTabButton tab="tab3" href="/tabs/tab3">
+                <IonIcon aria-hidden="true" icon={person} />
+                <IonLabel>Profile</IonLabel>
+              </IonTabButton>
+            </IonTabBar>
+          </IonTabs>
+        </Route>
+        <Redirect exact from="/" to="/login" />
+        <Redirect to="/login" />
+      </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
 );
