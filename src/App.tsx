@@ -14,6 +14,7 @@ import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 import Signup from './pages/Signup';
+import Login from './pages/Login';
 import Welcome from './pages/Welcome';
 
 /* Core CSS required for Ionic components to work properly */
@@ -71,8 +72,27 @@ const App: React.FC = () => (
           <Route path="/Signup">
             <Signup />
           </Route>
+          <Route path="/Login">
+            <Login />
+          </Route>
         </IonRouterOutlet>
         {location.pathname !== '/signup' && (
+        <IonTabBar slot="bottom" color="primary">
+          <IonTabButton tab="tab1" href="/tab1">
+            <IonIcon aria-hidden="true" icon={newspaper} />
+            <IonLabel>News Page</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="tab2" href="/tab2">
+            <IonIcon aria-hidden="true" icon={search} />
+            <IonLabel>Search</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="tab3" href="/tab3">
+            <IonIcon aria-hidden="true" icon={person} />
+            <IonLabel>Profile</IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+        )}
+        {location.pathname !== '/login' && (
         <IonTabBar slot="bottom" color="primary">
           <IonTabButton tab="tab1" href="/tab1">
             <IonIcon aria-hidden="true" icon={newspaper} />
