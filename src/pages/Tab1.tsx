@@ -97,7 +97,7 @@ const Tab1: React.FC = () => {
       </IonMenu>
 
       {/* Main Content Section */}
-      <IonContent id="main-content">
+      <IonPage id="main-content">
         <IonHeader>
           <IonToolbar color="primary">
             <IonButtons slot="start">
@@ -134,7 +134,7 @@ const Tab1: React.FC = () => {
             </div>
           )}
         </IonContent>
-      </IonContent>
+      </IonPage>
     </IonPage>
   );
 };
