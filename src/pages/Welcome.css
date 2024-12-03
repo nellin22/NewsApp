@@ -10,7 +10,8 @@
     width: 300px;
     height: 300px;
     object-fit: cover;
-    border-radius: 10px;
+    border: 1px solid #2a2c2e;
+    border-radius: 20px;
     margin-bottom: 20px;
 }
 .welcome-text {
