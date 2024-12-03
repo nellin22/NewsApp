@@ -4,11 +4,16 @@ import { IonContent,
   IonCard,
   IonCardContent,
   IonCardHeader,
-  IonCardTitle,
-  IonItem, } from '@ionic/react';
+  IonCardTitle, } from '@ionic/react';
 import './Tab3.css';
+import { useHistory } from 'react-router-dom';
 
 const Tab3: React.FC = () => {
+    const history = useHistory();
+  
+    const handleLogout = () => {
+      history.push('/login');
+    };
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -39,7 +44,7 @@ const Tab3: React.FC = () => {
               <IonButton fill="solid" expand="full">
                 It support
               </IonButton>
-              <IonButton fill="outline" expand="full">
+              <IonButton fill="outline" expand="full" onClick={handleLogout}>
                 Logout
               </IonButton>
             </IonCardContent>

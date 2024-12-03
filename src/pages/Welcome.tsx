@@ -1,22 +1,21 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import { IonContent, IonHeader, IonPage } from '@ionic/react';
 import './Welcome.css';
 
 const Welcome: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonTitle>Welcome page</IonTitle>
-        </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar color="custom-tab-bar">
-            <IonTitle size="large">Welcome page</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer name="Welcome page" />
+      <div className="welcome-container">
+      <h1 className="welcome-text">Welcome to the News App</h1>
+      <p>Get familiar with the latest news!</p>
+          <img
+            src="/Welcome-image.png"
+            alt="Welcome"
+            className="welcome-image"
+          />
+        </div>
       </IonContent>
     </IonPage>
   );
