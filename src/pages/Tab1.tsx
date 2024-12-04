@@ -20,7 +20,15 @@ import {
   IonImg,
   IonButton,
 } from '@ionic/react';
-import { businessOutline, videocamOutline, newspaperOutline, medkitOutline, rocketOutline, basketballOutline, desktopOutline } from 'ionicons/icons';
+import {
+  businessOutline,
+  videocamOutline,
+  newspaperOutline,
+  medkitOutline,
+  rocketOutline,
+  basketballOutline,
+  desktopOutline,
+} from 'ionicons/icons';
 import axios from 'axios';
 import './Tab1.css';
 
@@ -50,7 +58,9 @@ const categories = [
   'science',
 ];
 
-const categoryIcons: { [key in 'business' | 'entertainment' | 'general' | 'health' | 'science' | 'sports' | 'technology']: string } = {
+const categoryIcons: {
+  [key in | 'business' | 'entertainment' | 'general' | 'health' | 'science' | 'sports' | 'technology']: string;
+} = {
   business: businessOutline,
   entertainment: videocamOutline,
   general: newspaperOutline,
@@ -95,8 +105,8 @@ const Tab1: React.FC = () => {
         <IonHeader>
           <IonToolbar color="primary">
           <IonButtons slot="start">
-              <IonMenuButton/>
-            </IonButtons>
+          <IonMenuButton />
+        </IonButtons>
             <IonTitle>Categories</IonTitle>
           </IonToolbar>
         </IonHeader>
@@ -109,7 +119,10 @@ const Tab1: React.FC = () => {
                 onClick={() => handleCategoryClick(category)}
                 className={category === selectedCategory ? 'selected-category' : ''}
               >
-                <IonIcon icon={categoryIcons[category as keyof typeof categoryIcons]} slot="start" />
+                <IonIcon
+                  icon={categoryIcons[category as keyof typeof categoryIcons]}
+                  slot="start"
+                />
                 <IonLabel>{category.charAt(0).toUpperCase() + category.slice(1)}</IonLabel>
               </IonItem>
             ))}
@@ -120,19 +133,31 @@ const Tab1: React.FC = () => {
         <IonHeader>
           <IonToolbar color="primary">
             <IonButtons slot="start">
-              <IonMenuButton/>
+              <IonMenuButton />
             </IonButtons>
             <IonTitle>News</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent>
           {articles.length === 0 ? (
-            <p>Loading News...</p>
+            <div className="loading-container">
+              <p className="placeholder-text">Loading News...</p>
+            <IonImg
+              src="/Welcome-image.png"
+              className="placeholder-image"
+              alt="Loading"
+            />
+          </div>
           ) : (
+            <div className="news-container">
             <div className="news-grid">
               {articles.map((article, index) => (
                 <IonCard key={index} className="news-card">
-                  {article.urlToImage && <IonImg src={article.urlToImage} />}
+                  <IonImg
+                    src={article.urlToImage || '/Welcome-image.png'}
+                    className={!article.urlToImage ? 'placeholder-image' : ''}
+                    alt={article.title}
+                  />
                   <IonCardHeader>
                     <IonCardTitle>{article.title}</IonCardTitle>
                     <IonCardSubtitle>{article.source.name}</IonCardSubtitle>
@@ -150,6 +175,7 @@ const Tab1: React.FC = () => {
                   </IonCardContent>
                 </IonCard>
               ))}
+            </div>
             </div>
           )}
         </IonContent>

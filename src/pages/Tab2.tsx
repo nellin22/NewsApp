@@ -36,6 +36,8 @@ const Tab2: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
 
   const handleSearch = async () => {
+    console.log('Searching for:', searchText);
+    if (searchText.trim() === '') return;
     try {
       const response = await axios.get(`${BASE_URL}everything`, {
         params: {
@@ -63,37 +65,48 @@ const Tab2: React.FC = () => {
             <IonTitle size="large">Search</IonTitle>
           </IonToolbar>
         </IonHeader>
-        
-        {/* Search Section */}
         <IonSearchbar
           value={searchText}
           onIonChange={(e) => setSearchText(e.detail.value || '')}
         />
-        <IonButton onClick={handleSearch}>Search</IonButton>
-
-        {/* Displaying Articles */}
-        <div className="news-grid">
-          {articles.map((article, index) => (
-            <IonCard key={index} className="news-card">
-              {article.urlToImage && <IonImg src={article.urlToImage} />}
-              <IonCardHeader>
-                <IonCardTitle>{article.title}</IonCardTitle>
-                <IonCardSubtitle>{article.source.name}</IonCardSubtitle>
-              </IonCardHeader>
-              <IonCardContent>
-                <p>{article.description}</p>
-                <IonButton fill="outline" href={article.url} target="_blank">
-                  Read more
-                </IonButton>
-              </IonCardContent>
-            </IonCard>
-          ))}
-        </div>
+        <IonButton onClick={handleSearch} className="ion-button">Search</IonButton>
+        {articles.length === 0 ? (
+          <div className="placeholder-container">
+            <IonImg
+              src="/Welcome-image.png"
+              className="placeholder-image"
+              alt="Welcome"
+            />
+          </div>
+        ) : (
+          <div className="news-grid">
+            {articles.map((article, index) => (
+              <IonCard key={index} className="news-card">
+                <IonImg
+                  src={article.urlToImage || '/Welcome-image.png'}
+                  className={!article.urlToImage ? 'placeholder-image' : ''}
+                  alt={article.title}
+                />
+                <IonCardHeader>
+                  <IonCardTitle>{article.title}</IonCardTitle>
+                  <IonCardSubtitle>{article.source.name}</IonCardSubtitle>
+                </IonCardHeader>
+                <IonCardContent>
+                  <p>{article.description}</p>
+                  <IonButton fill="outline" href={article.url} target="_blank">
+                    Read more
+                  </IonButton>
+                </IonCardContent>
+              </IonCard>
+            ))}
+          </div>
+        )}
       </IonContent>
     </IonPage>
   );
 };
 
 export default Tab2;
+
 
 

@@ -1,14 +1,43 @@
+.ion-button {
+  width: 150px;
+  margin-left: 10px;
+}
+
 .news-grid {
     display: grid;
     gap: 16px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     padding: 16px;
   }
+
+  .placeholder-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    text-align: center;
+    margin-top: 20px;
+  }
   
+  .placeholder-image {
+    opacity: 0.5;
+    filter: grayscale(50%);
+    max-width: 60%;
+  }
+
   .news-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     max-width: 100%;
   }
-  
+
+  .news-card .placeholder-image {
+    display: block;
+    margin: 0 auto;
+    opacity: 0.5;
+    filter: grayscale(50%);
+    width: 60%;
+    height: auto;
+  }
